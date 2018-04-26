@@ -15,6 +15,7 @@ Build the jenkins docker image using dockerfile with following command
 ```
 docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile .
 ```
+This will create the jenkins build with the suggested plugins. The plugin list is taken from [https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json](https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json)
 
 Run the jenkins docker image with following commands:
 
