@@ -1,6 +1,14 @@
 # cdc-pact-expert-talk
 Expert talk repo to contain overall details of the producer and consumer services, plus required docker files to complete the setup for the demo.
 
+# Provider service
+
+Code for provider user service can be found [here](https://github.com/prashant-ee/user-service)
+
+# Consumer service
+
+Code for consumer order service can be found [here](https://github.com/prashant-ee/order-service)
+
 # Demo scenarios
 
 Consumer - Order service
