@@ -9,6 +9,20 @@ Code for provider user service can be found [here](https://github.com/prashant-e
 
 Code for consumer order service can be found [here](https://github.com/prashant-ee/order-service)
 
+# Setting up Jenkins
+
+Build the jenkins docker image using dockerfile with following command
+```
+docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile
+```
+
+Run the jenkins docker image with following commands:
+
+```
+docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home cdc-expert-talk/jenkins-cdc
+```
+The volume from the host can be located here: ```/var/lib/docker/volumes```
+
 # Demo scenarios
 
 Consumer - Order service
