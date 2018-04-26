@@ -1,0 +1,13 @@
+FROM jenkins/jenkins:lts
+
+# install suggested plugins
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+
+# install pact broker client
+RUN cd /usr/share/jenkins/ref && curl -LO https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.38.0/pact-1.38.0-linux-x86_64.tar.gz
+
+RUN cd /usr/share/jenkins/ref && tar xzf pact-1.38.0-linux-x86_64.tar.gz
+
+# check pact broker added available on path.
+RUN /usr/share/jenkins/ref/pact/bin/pact-broker version
