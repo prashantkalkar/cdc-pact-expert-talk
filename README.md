@@ -54,3 +54,15 @@ Order service => call GET /user/{userId} => User service response with user deta
 ### Scenario 8 - Deploy Consumer to DEV - can-i-deploy pass.
 
 ### Scenario 9 - Deploy consumer to PROD - can-i-deploy fail. 
+
+# Setup remaining
+
+- Pact broker docker-compose along with Jenkins
+- Setup nexus docker (optional but if possible greate)
+- Add nexus as part of docker-compose. 
+- Create required Jenkins jobs
+   - Provider build job.
+   - Provider deploy job (possibly can be combined).
+   - Provider contract pipeline job.
+   - Consumer build job.
+   - Consumer deploy job. 
