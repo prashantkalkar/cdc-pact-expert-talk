@@ -13,7 +13,7 @@ Code for consumer order service can be found [here](https://github.com/prashant-
 
 Build the jenkins docker image using dockerfile with following command
 ```
-docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile
+docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile .
 ```
 
 Run the jenkins docker image with following commands:
