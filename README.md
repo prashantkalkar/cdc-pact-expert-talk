@@ -22,7 +22,7 @@ Run the jenkins docker image with following commands:
 ```
 docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home cdc-expert-talk/jenkins-cdc
 ```
-The volume from the host can be located here: ```/var/lib/docker/volumes```
+The volume from the host can be located here: ```/var/lib/docker/volumes``` (for mac and windows it will be inside the vms).
 
 # Demo scenarios
 
