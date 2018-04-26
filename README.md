@@ -24,6 +24,17 @@ docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home cdc-exp
 ```
 The volume from the host can be located here: ```/var/lib/docker/volumes``` (for mac and windows it will be inside the vms).
 
+# Setting up local Nexus Repository
+
+Run following commands for nexus repo
+```
+$ docker run -d --name nexus-data sonatype/nexus echo "data-only container for Nexus"
+$ docker run -d -p 8081:8081 --name nexus --volumes-from nexus-data sonatype/nexus
+```
+Commands taken from [https://github.com/sonatype/docker-nexus/blob/master/README.md](https://github.com/sonatype/docker-nexus/blob/master/README.md)
+
+This will make the nexus repo available at url : http://localhost:8081/nexus
+
 # Demo scenarios
 
 Consumer - Order service
