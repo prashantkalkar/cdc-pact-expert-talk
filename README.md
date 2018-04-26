@@ -12,6 +12,7 @@ Order service => call GET /user/{userId} => User service response with user deta
 - Create webhook after this (?)
 
 ### Scenario 2 - Provider passing
+ - Fail with Provider state implementation missing.
 
 ### Scenario 3 - Provider failing (fullName instead of name is used in the response).
 
