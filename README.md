@@ -35,6 +35,18 @@ Commands taken from [https://github.com/sonatype/docker-nexus/blob/master/README
 
 This will make the nexus repo available at url : http://localhost:8081/nexus
 
+# Make nexus accessible with hostname (required to be able to access Nexus from within Jenkins docker container).
+
+Add an entry in your host machin's /etc/hosts file as follows:
+```
+127.0.0.1       mynexus
+```
+mynexus host name is being used by user-service and order-service pom files. To test go to [http://mynexus:8081/nexus](http://mynexus:8081/nexus)
+
+# Add settings.xml
+
+Use the settings.xml and add it under the local machines ```~/.m2/``` directory. This settings file will enable ```user-service``` and ```order-service``` to resolve artifacts from local nexus repository.  
+
 # Demo scenarios
 
 Consumer - Order service
