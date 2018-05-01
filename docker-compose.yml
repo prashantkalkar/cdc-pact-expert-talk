@@ -35,7 +35,7 @@ services:
     networks:
       - cdc-setup
     environment:
-      - JVM_OPTS=-Xmx1048m
+      - JAVA_OPTS=-Xmx2G
 
   nexus-data:
     image: sonatype/nexus
