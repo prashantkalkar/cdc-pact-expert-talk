@@ -4,6 +4,15 @@ FROM jenkins/jenkins:lts
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 
+# install maven
+USER root
+RUN apt-get update && apt-get install -y vim maven subversion
+RUN mkdir $JENKINS_HOME/.m2
+COPY /settings.xml /tmp/
+
+# drop back to the regular jenkins user - good practice
+USER jenkins
+
 # install pact broker client
 RUN cd /usr/share/jenkins/ref && curl -LO https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.38.0/pact-1.38.0-linux-x86_64.tar.gz
 
