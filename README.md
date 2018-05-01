@@ -80,12 +80,9 @@ Order service => call GET /user/{userId} => User service response with user deta
 
 # Setup remaining
 
-- Pact broker docker-compose along with Jenkins
-- Setup nexus docker (optional but if possible greate)
-- Add nexus as part of docker-compose. 
-- Create required Jenkins jobs
-   - Provider build job.
-   - Provider deploy job (possibly can be combined).
-   - Provider contract pipeline job.
-   - Consumer build job.
-   - Consumer deploy job. 
+- Add code for DEV and PROD tags in provider job. 
+- Create Deploy jobs for Consumer (Prod and Dev)
+- Create Deploy jobs for Provider (Prod and Dev)
+- Create Provider Contract Pipeline (to verify consumer changes). 
+- Do the slack integration. 
+- Run the scenarios.  
