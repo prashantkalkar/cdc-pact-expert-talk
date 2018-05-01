@@ -86,3 +86,7 @@ Order service => call GET /user/{userId} => User service response with user deta
 - Create Provider Contract Pipeline (to verify consumer changes). 
 - Do the slack integration. 
 - Run the scenarios.  
+
+# Reference
+The version related to a tag of a service can be fetched from following url from pact broker
+http://broker_app/pacticipants/{pacticipant}/latest-version/{tag}
