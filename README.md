@@ -77,6 +77,7 @@ Order service => call GET /user/{userId} => User service response with user deta
 ### Scenario 8 - Deploy Consumer to DEV - can-i-deploy pass.
 
 ### Scenario 9 - Deploy consumer to PROD - can-i-deploy fail. 
+- Fix by deploying the provider to Prod and then promote consumer to PROD.
 
 # Webhook creation
 
