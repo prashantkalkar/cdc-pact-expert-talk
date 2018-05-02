@@ -78,6 +78,38 @@ Order service => call GET /user/{userId} => User service response with user deta
 
 ### Scenario 9 - Deploy consumer to PROD - can-i-deploy fail. 
 
+# Webhook creation
+
+- Edit job configuration which needed to be triggred remotely. 
+- Enable 'Trigger build remotely' and provide a appropriate token. 
+- Note down the url provided in the description. Save the configuration.
+- Try triggring the job remotely through the url
+```
+curl -X POST -u "jenkins_user:jenkins_password" "url"
+```
+- You might need to disable CSRF as per the version of jenkins 
+(refer: https://issues.jenkins-ci.org/browse/JENKINS-42200 & https://support.cloudbees.com/hc/en-us/articles/219257077-CSRF-Protection-Explained)
+- Once the remote url trigger works for the job. 
+- Configure a webhook in the Pact Broker by clicking on the `create webhook` link on pact broken home. 
+- Send the payload similar to following:
+```
+{
+  "events": [{
+    "name": "contract_content_changed"
+  }],
+  "request": {
+    "method": "POST",
+    "url": "http://jenkins:8080/job/user-service/job/user-service-contract-pipeline/build?token=user-service-contract-pipeline-webhook-token",
+    "username": "jenkins_user",
+    "password": "jenkins_password",
+    "headers": {
+      "Accept": "application/json"
+    }
+  }
+}
+```
+- The output will also provide a link to test the webhook.
+
 # Setup remaining
 
 - Add code for DEV and PROD tags in provider job. 
