@@ -32,6 +32,18 @@ Add following entries in `/etc/host` to allow access to these services
 127.0.0.1 jenkins
 ```
 
+### Add settings.xml
+
+Use the settings.xml and add it under the local machines ```~/.m2/``` directory. This settings file will enable ```user-service``` and ```order-service``` to resolve artifacts from local nexus repository.
+
+### Test setup by running Order service tests locally
+
+Run tests locally with command `mvn clean install`
+
+### Test setup by running User service (make sure to use the right command or avoid running) locally.
+
+Run test locally with command `mvn clean install -Dpact.verifier.publishResults=false`
+
 ### Start all services on local.
 
 To start all of these run the docker compose command :
@@ -70,29 +82,6 @@ Setup user and email using following command
 
 git config --global user.name "<Your Name>"
 git config --global user.email "<Your email>"
-
-# Setting up local Nexus Repository
-
-Run following commands for nexus repo
-```
-$ docker run -d --name nexus-data sonatype/nexus echo "data-only container for Nexus"
-$ docker run -d -p 8081:8081 --name nexus --volumes-from nexus-data sonatype/nexus
-```
-Commands taken from [https://github.com/sonatype/docker-nexus/blob/master/README.md](https://github.com/sonatype/docker-nexus/blob/master/README.md)
-
-This will make the nexus repo available at url : http://localhost:8081/nexus
-
-# Make nexus accessible with hostname (required to be able to access Nexus from within Jenkins docker container).
-
-Add an entry in your host machin's /etc/hosts file as follows:
-```
-127.0.0.1       mynexus
-```
-mynexus host name is being used by user-service and order-service pom files. To test go to [http://mynexus:8081/nexus](http://mynexus:8081/nexus)
-
-# Add settings.xml
-
-Use the settings.xml and add it under the local machines ```~/.m2/``` directory. This settings file will enable ```user-service``` and ```order-service``` to resolve artifacts from local nexus repository.  
 
 # Demo scenarios
 
