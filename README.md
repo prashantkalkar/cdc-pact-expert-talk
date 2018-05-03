@@ -83,6 +83,12 @@ Setup user and email using following command
 git config --global user.name "<Your Name>"
 git config --global user.email "<Your email>"
 
+#### Configure slack global configuration
+Use base URL : https://cdc-expert-talk.slack.com/services/hooks/jenkins-ci/
+Integration token : <generated>
+ 
+#### Disable CSRF (see webhook add section).
+
 # Demo scenarios
 
 Consumer - Order service
