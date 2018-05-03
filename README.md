@@ -9,7 +9,7 @@ Code for provider user service can be found [here](https://github.com/prashant-e
 
 Code for consumer order service can be found [here](https://github.com/prashant-ee/order-service)
 
-# Setting up Jenkins
+# Creating Jenkins image
 
 Build the jenkins docker image using dockerfile with following command
 ```
@@ -17,9 +17,22 @@ docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile .
 ```
 This will create the jenkins build with the suggested plugins. The plugin list is taken from [https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json](https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json)
 
+
 # Setting up local environment
 
 To run the scenarios locally, along with these git repositories, a Jenkins server is required to create and run pipeline jobs. A nexus server is required to host consumer and provider's released artifacts. A Pact broker server and Postgres SQL DB to hold the Pact contracts. 
+
+### Make Jenkins, Pact Broker and Nexus accessible on local
+
+Add following entries in `/etc/host` to allow access to these services 
+
+```
+127.0.0.1 mynexus
+127.0.0.1 broker_app
+127.0.0.1 jenkins
+```
+
+### Start all services on local.
 
 To start all of these run the docker compose command :
 
@@ -27,7 +40,9 @@ To start all of these run the docker compose command :
 docker-compose up
 ```
 
-### Create appropriate maven setup on Jenkins
+### Setup Jenkins
+
+#### Create appropriate maven setup on Jenkins
 
 - Login to Jenkins container with 
 ```
@@ -40,6 +55,21 @@ mkdir /var/jenkins_home/.m2
 mkdir /var/jenkins_home/.m2/repository
 cp /tmp/settings.xml .m2/
 ```
+
+#### Create an SSH key for Jenkins and add it in github account
+
+Create ssh key with instructions from 
+https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux
+
+Add ssh key to github account
+https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#platform-linux
+
+#### Setup git configuration for jenkins
+
+Setup user and email using following command
+
+git config --global user.name "<Your Name>"
+git config --global user.email "<Your email>"
 
 # Setting up local Nexus Repository
 
