@@ -91,29 +91,29 @@ Provider - User service
 Order service => call GET /user/{userId} => User service response with user details.
 
 ### Scenario 1 - Consumer running (passing)
-- Create webhook after this (?)
+- Create webhook after this.
 
 ### Scenario 2 - Provider passing
  - Fail with Provider state implementation missing.
 
 ### Scenario 3 - Provider failing (fullName instead of name is used in the response).
 
-### Scenario 4 - Consumer Passing changes (Pre-verified contracts)(no contract change)
-- Some internal implementation change. 
+### Scenario 4 - Take consumer and provider to production.
 
-### Scenario 5 - Take consumer and provider to production.
-
-### Scenario 6 - Consumer Failing 
+### Scenario 5 - Consumer Failing 
 - Pact changes
 - Start using a new field that is not provided by the provider e.g. primeMemberId.
 - fix with the producer change by sending the primeMemberId details as well.
 
-### Scenario 7 - Deploy Provider to DEV.
+### Scenario 6 - Deploy Provider to DEV.
 
-### Scenario 8 - Deploy Consumer to DEV - can-i-deploy pass.
+### Scenario 7 - Deploy Consumer to DEV - can-i-deploy pass.
 
-### Scenario 9 - Deploy consumer to PROD - can-i-deploy fail. 
+### Scenario 8 - Deploy consumer to PROD - can-i-deploy fail. 
 - Fix by deploying the provider to Prod and then promote consumer to PROD.
+
+### Scenario 9 - Consumer Passing changes (Pre-verified contracts)(no contract change)
+- Some internal implementation change. 
 
 # Webhook creation
 
@@ -149,10 +149,6 @@ curl -X POST -u "jenkins_user:jenkins_password" "url"
 
 # Setup remaining
 
-- Add code for DEV and PROD tags in provider job. 
-- Create Deploy jobs for Consumer (Prod and Dev)
-- Create Deploy jobs for Provider (Prod and Dev)
-- Create Provider Contract Pipeline (to verify consumer changes). 
 - Do the slack integration. 
 - Run the scenarios.  
 
