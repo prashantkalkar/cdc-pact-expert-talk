@@ -56,3 +56,4 @@ publish-over-ssh
 ssh
 pipeline-utility-steps
 http_request
+slack
