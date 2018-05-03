@@ -17,12 +17,29 @@ docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile .
 ```
 This will create the jenkins build with the suggested plugins. The plugin list is taken from [https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json](https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json)
 
-Run the jenkins docker image with following commands:
+# Setting up local environment
+
+To run the scenarios locally, along with these git repositories, a Jenkins server is required to create and run pipeline jobs. A nexus server is required to host consumer and provider's released artifacts. A Pact broker server and Postgres SQL DB to hold the Pact contracts. 
+
+To start all of these run the docker compose command :
 
 ```
-docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home cdc-expert-talk/jenkins-cdc
+docker-compose up
 ```
-The volume from the host can be located here: ```/var/lib/docker/volumes``` (for mac and windows it will be inside the vms).
+
+### Create appropriate maven setup on Jenkins
+
+- Login to Jenkins container with 
+```
+docker exec -it <JenkinsContainerId> /bin/bash
+```
+- Go to `/var/jenkins_home` and run following commands
+
+```
+mkdir /var/jenkins_home/.m2
+mkdir /var/jenkins_home/.m2/repository
+cp /tmp/settings.xml .m2/
+```
 
 # Setting up local Nexus Repository
 
