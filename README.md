@@ -152,12 +152,3 @@ curl -X POST -u "jenkins_user:jenkins_password" "url"
 }
 ```
 - The output will also provide a link to test the webhook.
-
-# Setup remaining
-
-- Do the slack integration. 
-- Run the scenarios.  
-
-# Reference
-The version related to a tag of a service can be fetched from following url from pact broker
-http://broker_app/pacticipants/{pacticipant}/latest-version/{tag}
