@@ -79,9 +79,10 @@ https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#pl
 #### Setup git configuration for jenkins
 
 Setup user and email using following command
-
+```
 git config --global user.name "<Your Name>"
 git config --global user.email "<Your email>"
+```
 
 #### Configure slack global configuration
 Use base URL : https://cdc-expert-talk.slack.com/services/hooks/jenkins-ci/
