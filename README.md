@@ -9,6 +9,25 @@ Code for provider user service can be found [here](https://github.com/prashant-e
 
 Code for consumer order service can be found [here](https://github.com/prashant-ee/order-service)
 
+# Forking the repositories
+
+Forked this, user-service and order-service repositories. See [here](https://help.github.com/articles/fork-a-repo/) on how to fork the repositories.
+
+Clone the repositories from your fork.
+
+Update the order-service and user-service pom.xml files to point to your fork as follows and push the changes.
+
+```
+<scm>
+    <connection>scm|git:<point-to-your-forked-git-url></connection>
+    <url>scm|git:<point-to-your-forked-git-url></url>
+    <developerConnection>scm:git:<point-to-your-forked-git-url></developerConnection>
+    <tag>HEAD</tag>
+</scm>
+```
+
+Use the forked urls in the jenkins jobs as well.
+
 # Creating Jenkins image
 
 Build the jenkins docker image using dockerfile with following command
