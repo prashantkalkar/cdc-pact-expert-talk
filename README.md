@@ -43,7 +43,7 @@ To run the scenarios locally, along with these git repositories, a Jenkins serve
 
 ### Make Jenkins, Pact Broker and Nexus accessible on local
 
-Add following entries in `/etc/host` to allow access to these services 
+Add following entries in `/etc/hosts` to allow access to these services 
 
 ```
 127.0.0.1 mynexus
