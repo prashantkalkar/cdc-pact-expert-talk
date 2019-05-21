@@ -75,6 +75,19 @@ To start all of these run the docker compose command :
 docker-compose up
 ```
 
+### Verify services are up and running locally:
+Verify by hitting following urls in the browser:
+
+Pact Broker:
+http://broker_app:80
+
+Nexus:
+http://mynexus:8081/nexus
+
+Jenkins:
+http://jenkins:8080
+
+
 ### Setup Jenkins
 
 #### Create appropriate maven setup on Jenkins
