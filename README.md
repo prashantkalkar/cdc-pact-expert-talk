@@ -63,6 +63,8 @@ Run tests locally with command `mvn clean install`
 
 Run test locally with command `mvn clean install -Dpact.verifier.publishResults=false`
 
+(The test might fail if the pact broker is not running or there are not pacts in the pact broker, it will work once you publish the pacts from the order service pacts).
+
 ### Start all services on local.
 
 To start all of these run the docker compose command :
