@@ -65,6 +65,10 @@ Run test locally with command `mvn clean install -Dpact.verifier.publishResults=
 
 ### Start all services on local.
 
+Make sure you have following settings in the docker preferences -> Advanced:
+
+4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
+
 To start all of these run the docker compose command :
 
 ```
