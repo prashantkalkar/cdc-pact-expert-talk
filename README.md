@@ -27,7 +27,7 @@ Code for consumer order service can be found [here](https://github.com/prashant-
     <tag>HEAD</tag>
 </scm>
 ```
-e.g.if the forked git url is git@github.com:pareshmahajan/user-service.git in the then replace it in the above block. Above block will look like:
+e.g.if the forked git url is 'git@github.com:pareshmahajan/user-service.git' then replace it in the above block. Above block will look like:
         
 ```
 <scm>
