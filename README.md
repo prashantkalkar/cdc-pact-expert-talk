@@ -43,7 +43,7 @@ To run the scenarios locally, along with these git repositories, a Jenkins serve
 
 ### Make Jenkins, Pact Broker and Nexus accessible on local
 
-Add following entries in `/etc/host` to allow access to these services 
+Add following entries in `/etc/hosts` to allow access to these services 
 
 ```
 127.0.0.1 mynexus
@@ -67,11 +67,28 @@ Run test locally with command `mvn clean install -Dpact.verifier.publishResults=
 
 ### Start all services on local.
 
+Make sure you have following settings in the docker preferences -> Advanced:
+
+4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
+
 To start all of these run the docker compose command :
 
 ```
 docker-compose up
 ```
+
+### Verify services are up and running locally:
+Verify by hitting following urls in the browser:
+
+Pact Broker:
+http://broker_app:80
+
+Nexus:
+http://mynexus:8081/nexus
+
+Jenkins:
+http://jenkins:8080
+
 
 ### Setup Jenkins
 
