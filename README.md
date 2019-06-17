@@ -11,11 +11,11 @@ Code for consumer order service can be found [here](https://github.com/prashant-
 
 # Forking the repositories
 
-Forked this, user-service and order-service repositories. See [here](https://help.github.com/articles/fork-a-repo/) on how to fork the repositories.
+1. Fork current repo, user-service and order-service repositories. See [here](https://help.github.com/articles/fork-a-repo/) on how to fork the repositories.
 
-Clone the repositories from your fork.
+2. Clone the repositories from your fork.
 
-Update the order-service and user-service pom.xml files to point to your fork as follows and push the changes.
+3. Update the pom.xml file present in the order-service and user-service repos so that it correctly points to your fork as follows.
 
 ```
 <scm>
@@ -25,8 +25,19 @@ Update the order-service and user-service pom.xml files to point to your fork as
     <tag>HEAD</tag>
 </scm>
 ```
-
-Use the forked urls in the jenkins jobs as well.
+e.g.if the forked git url is git@github.com:pareshmahajan/user-service.git in the then replace it in the above block. Above block will look like:
+        
+```
+<scm>
+    <connection>scm|git:git@github.com:pareshmahajan/user-service.git</connection>
+    <url>scm|git:git@github.com:pareshmahajan/user-service.git</url>
+    <developerConnection>scm:git:git@github.com:pareshmahajan/user-service.git</developerConnection>
+    <tag>HEAD</tag>
+    </scm>
+```
+4. Push the changes made in the pom.xml file in the respective order-service and user-service forked repos of your own.
+ 
+5. Use the forked urls in the jenkins jobs as well.
 
 # Creating Jenkins image
 
