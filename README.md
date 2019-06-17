@@ -1,5 +1,7 @@
 # cdc-pact-expert-talk
-Expert talk repo to contain overall details of the producer and consumer services, plus required docker files to complete the setup for the demo.
+This talk was presented by [Prashant Kalkar](https://github.com/prashant-ee) and [Paresh Mahajan](https://github.com/pareshmahajan) at [Expert Talk meetup](https://www.meetup.com/expert-talks-Pune/events/249861789/) 
+
+This repo contains overall details of the producer and consumer services, plus required docker files to complete the setup for the demo.
 
 # Provider service
 
