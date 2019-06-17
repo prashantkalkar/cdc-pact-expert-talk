@@ -41,7 +41,16 @@ e.g.if the forked git url is git@github.com:pareshmahajan/user-service.git in th
  
 5. Use the forked urls in the jenkins jobs as well.
 
-# Creating Jenkins image
+# Pre-requisites before the next set up:
+In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configtation machine to the set up (atlest 16 GB RAM, quad core processor)
+
+One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
+
+After installing docker, change the following settings in the docker preferences -> Advanced:
+
+4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
+
+# Creating Jenkins image:
 
 Build the jenkins docker image using dockerfile with following command
 ```
@@ -50,11 +59,11 @@ docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile .
 This will create the jenkins build with the suggested plugins. The plugin list is taken from [https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json](https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json)
 
 
-# Setting up local environment
+# Setting up local environment:
 
 To run the scenarios locally, along with these git repositories, a Jenkins server is required to create and run pipeline jobs. A nexus server is required to host consumer and provider's released artifacts. A Pact broker server and Postgres SQL DB to hold the Pact contracts. 
 
-### Make Jenkins, Pact Broker and Nexus accessible on local
+### Make Jenkins, Pact Broker and Nexus accessible on local:
 
 Add following entries in `/etc/hosts` to allow access to these services 
 
@@ -64,25 +73,21 @@ Add following entries in `/etc/hosts` to allow access to these services
 127.0.0.1 jenkins
 ```
 
-### Add settings.xml
+### Add settings.xml:
 
 Use the settings.xml and add it under the local machines ```~/.m2/``` directory. This settings file will enable ```user-service``` and ```order-service``` to resolve artifacts from local nexus repository.
 
-### Test setup by running Order service tests locally
+### Test setup by running Order service tests locally:
 
 Run tests locally with command `mvn clean install`
 
-### Test setup by running User service (make sure to use the right command or avoid running) locally.
+### Test setup by running User service (make sure to use the right command or avoid running) locally:
 
 Run test locally with command `mvn clean install -Dpact.verifier.publishResults=false`
 
 (The test might fail if the pact broker is not running or there are not pacts in the pact broker, it will work once you publish the pacts from the order service pacts).
 
-### Start all the services locally
-
-Make sure you have following settings in the docker preferences -> Advanced:
-
-4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
+### Start all the services locally:
 
 To start all of these run the docker compose command :
 
