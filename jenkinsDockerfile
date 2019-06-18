@@ -1,5 +1,7 @@
 FROM jenkins/jenkins:lts
 
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
+
 # copy init scripts
 COPY init_scripts/* /usr/share/jenkins/ref/init.groovy.d/
 
