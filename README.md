@@ -35,7 +35,7 @@ e.g.if the forked git url is 'git@github.com:pareshmahajan/user-service.git' the
     <url>scm|git:git@github.com:pareshmahajan/user-service.git</url>
     <developerConnection>scm:git:git@github.com:pareshmahajan/user-service.git</developerConnection>
     <tag>HEAD</tag>
-    </scm>
+</scm>
 ```
 4. Push the changes made in the pom.xml file in the respective order-service and user-service forked repos of your own.
  
