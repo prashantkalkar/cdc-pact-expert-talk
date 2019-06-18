@@ -57,3 +57,4 @@ ssh
 pipeline-utility-steps
 http_request
 slack
+jdk-tool

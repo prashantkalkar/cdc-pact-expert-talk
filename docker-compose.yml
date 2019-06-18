@@ -35,7 +35,7 @@ services:
     networks:
       - cdc-setup
     environment:
-      - "JAVA_OPTS=-Xmx2g -Xms2g"
+      - "JAVA_OPTS=-Xmx2g -Xms2g -Djenkins.install.runSetupWizard=false"
 
   nexus-data:
     image: sonatype/nexus
