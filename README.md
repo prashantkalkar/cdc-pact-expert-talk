@@ -44,11 +44,20 @@ e.g.if the forked git url is 'git@github.com:pareshmahajan/user-service.git' the
 # Pre-requisites before the next set up:
 In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configuration machine to the set up (atlest 16 GB RAM, quad core processor)
 
-One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
+1. One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
 
 After installing docker, change the following settings in the docker preferences -> Advanced:
 
 4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
+
+2. If you don't have maven installed already on your machine then install it using this [link](https://maven.apache.org/install.html)
+If not present, Create a directory called '~/.m2'.
+Commands to verify and create directory are:
+```
+ls -l ~/.m2
+mkdir ~/.m2
+```
+
 
 # Creating Jenkins image:
 
