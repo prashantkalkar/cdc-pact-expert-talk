@@ -77,6 +77,11 @@ Add following entries in `/etc/hosts` to allow access to these services
 
 Use the settings.xml and add it under the local machines ```~/.m2/``` directory. This settings file will enable ```user-service``` and ```order-service``` to resolve artifacts from local nexus repository.
 
+Assuming you are at the root directory of this repo, use following command to copy settings.xml:
+```
+cp settings.xml ~/.m2/
+```
+
 ### Test setup by running Order service tests locally:
 
 Run tests locally with command `mvn clean install`
