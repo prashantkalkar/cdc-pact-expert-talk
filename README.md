@@ -42,7 +42,7 @@ e.g.if the forked git url is 'git@github.com:pareshmahajan/user-service.git' the
 5. Use the forked urls in the jenkins jobs as well.
 
 # Pre-requisites before the next set up:
-In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configtation machine to the set up (atlest 16 GB RAM, quad core processor)
+In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configuration machine to the set up (atlest 16 GB RAM, quad core processor)
 
 One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
 
