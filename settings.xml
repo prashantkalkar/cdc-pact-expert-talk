@@ -3,11 +3,16 @@
   -->
   <!-- <localRepository>/path/to/local/repo</localRepository>
   -->
-    <mirrors>
+  <mirrors>
     <mirror> <!--Send all requests to the public group -->
       <id>nexus</id>
-      <mirrorOf>*</mirrorOf>
+      <mirrorOf>com.ee</mirrorOf>
       <url>http://mynexus:8081/nexus/content/groups/public</url>
+    </mirror>
+    <mirror>
+      <id>publicCentral</id>
+      <mirrorOf>*</mirrorOf>
+      <url>https://repo.maven.apache.org/maven2</url>
     </mirror>
   </mirrors>
   <activeProfiles>
@@ -21,8 +26,18 @@
           to activate snapshots for both! -->
       <repositories>
         <repository>
+          <id>nexusRepo</id>
+          <url>http://mynexus:8081/nexus/content/groups/public</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+        <repository>
           <id>central</id>
-          <url>http://central</url>
+          <url>https://repo.maven.apache.org/maven2</url>
           <releases>
             <enabled>true</enabled>
           </releases>
@@ -34,7 +49,7 @@
       <pluginRepositories>
         <pluginRepository>
           <id>central</id>
-          <url>http://central</url>
+          <url>https://repo.maven.apache.org/maven2</url>
           <releases>
             <enabled>true</enabled>
           </releases>

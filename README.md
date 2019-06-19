@@ -35,20 +35,29 @@ e.g.if the forked git url is 'git@github.com:pareshmahajan/user-service.git' the
     <url>scm|git:git@github.com:pareshmahajan/user-service.git</url>
     <developerConnection>scm:git:git@github.com:pareshmahajan/user-service.git</developerConnection>
     <tag>HEAD</tag>
-    </scm>
+</scm>
 ```
 4. Push the changes made in the pom.xml file in the respective order-service and user-service forked repos of your own.
  
 5. Use the forked urls in the jenkins jobs as well.
 
 # Pre-requisites before the next set up:
-In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configtation machine to the set up (atlest 16 GB RAM, quad core processor)
+In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configuration machine to the set up (atlest 16 GB RAM, quad core processor)
 
-One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
+1. One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
 
 After installing docker, change the following settings in the docker preferences -> Advanced:
 
 4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
+
+2. If you don't have maven installed already on your machine then install it using this [link](https://maven.apache.org/install.html)
+If not present, Create a directory called '~/.m2'.
+Commands to verify and create directory are:
+```
+ls -l ~/.m2
+mkdir ~/.m2
+```
+
 
 # Creating Jenkins image:
 
@@ -76,6 +85,11 @@ Add following entries in `/etc/hosts` to allow access to these services
 ### Add settings.xml:
 
 Use the settings.xml and add it under the local machines ```~/.m2/``` directory. This settings file will enable ```user-service``` and ```order-service``` to resolve artifacts from local nexus repository.
+
+Assuming you are at the root directory of this repo, use following command to copy settings.xml:
+```
+cp settings.xml ~/.m2/
+```
 
 ### Test setup by running Order service tests locally:
 
