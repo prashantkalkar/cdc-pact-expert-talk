@@ -32,6 +32,7 @@ services:
       - "50000:50000"
     volumes:
       - "jenkins_home:/var/jenkins_home"
+      - ~/.ssh:/var/jenkins_home/.ssh
     networks:
       - cdc-setup
     environment:
