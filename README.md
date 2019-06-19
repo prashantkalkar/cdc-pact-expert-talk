@@ -135,7 +135,7 @@ docker exec -it <JenkinsContainerId> /bin/bash
 ```
 mkdir /var/jenkins_home/.m2
 mkdir /var/jenkins_home/.m2/repository
-cp /tmp/settings.xml .m2/
+cp /tmp/settings.xml /var/jenkins_home/.m2/
 ```
 
 #### Create an SSH key for Jenkins and add it in github account
