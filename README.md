@@ -135,7 +135,7 @@ docker exec -it <JenkinsContainerId> /bin/bash
 ```
 mkdir /var/jenkins_home/.m2
 mkdir /var/jenkins_home/.m2/repository
-cp /tmp/settings.xml .m2/
+cp /tmp/settings.xml /var/jenkins_home/.m2/
 ```
 
 #### Create an SSH key for Jenkins and add it in github account
@@ -148,10 +148,16 @@ https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#pl
 
 #### Setup git configuration for jenkins
 
-Setup user and email using following command
+Setup user and email using the following command
 ```
 git config --global user.name "<Your Name>"
 git config --global user.email "<Your email>"
+```
+#### Add GitHub to known hosts
+
+Run command
+```
+ssh -T git@github.com
 ```
 
 #### Configure slack global configuration
