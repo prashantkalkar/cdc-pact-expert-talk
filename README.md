@@ -130,7 +130,7 @@ http://jenkins:8080
 ```
 docker exec -it <JenkinsContainerId> /bin/bash
 ```
-- Go to `/var/jenkins_home` and run following commands
+- Run following commands to copy setttings.xml to Jenkins box:
 
 ```
 mkdir /var/jenkins_home/.m2
