@@ -174,16 +174,16 @@ Provider - User service
 
 Order service => call GET /user/{userId} => User service response with user details.
 
-### Scenario 1 - Consumer running (passing)
+### Scenario 1 (local) - Consumer running (passing)
 
-### Scenario 2 - Provider passing
+### Scenario 2 (local) - Provider passing
  - Fail with Provider state implementation missing.
 
-### Scenario 3 - Provider failing (fullName instead of name is used in the response).
+### Scenario 3 (local) - Provider failing (fullName instead of name is used in the response).
 
-### Scenario 4 - Take consumer and provider to production.
+### Scenario 4 (Pipeline) - Add build pipelines for consumer and provider. Take consumer and provider till production.
 
-### Scenario 5 - Consumer Failing 
+### Scenario 5 - Consumer contract change, provider contract pipeline failing
 - Create webhook here first.
 - Pact changes
 - Start using a new field that is not provided by the provider e.g. primeMemberId.
