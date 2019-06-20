@@ -11,6 +11,16 @@ Code for provider user service can be found [here](https://github.com/prashant-e
 
 Code for consumer order service can be found [here](https://github.com/prashant-ee/order-service)
 
+# Verify or Do maven setup 
+
+If you don't have maven installed already on your machine then install it using this [link](https://maven.apache.org/install.html)
+If not present, Create a directory called '~/.m2'.
+Commands to verify and create directory are:
+```
+ls -l ~/.m2
+mkdir ~/.m2
+```
+
 # Forking the repositories
 
 1. Fork current repo, user-service and order-service repositories. See [here](https://help.github.com/articles/fork-a-repo/) on how to fork the repositories.
@@ -38,49 +48,6 @@ e.g.if the forked git url is 'git@github.com:pareshmahajan/user-service.git' the
 </scm>
 ```
 4. Push the changes made in the pom.xml file in the respective order-service and user-service forked repos of your own.
- 
-5. Use the forked urls in the jenkins jobs as well.
-
-# Pre-requisites before the next set up:
-In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configuration machine to the set up (atlest 16 GB RAM, quad core processor)
-
-1. One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
-
-After installing docker, change the following settings in the docker preferences -> Advanced:
-
-4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
-
-2. If you don't have maven installed already on your machine then install it using this [link](https://maven.apache.org/install.html)
-If not present, Create a directory called '~/.m2'.
-Commands to verify and create directory are:
-```
-ls -l ~/.m2
-mkdir ~/.m2
-```
-
-
-# Creating Jenkins image:
-
-Build the jenkins docker image using dockerfile with following command
-```
-docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile .
-```
-This will create the jenkins build with the suggested plugins. The plugin list is taken from [https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json](https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json)
-
-
-# Setting up local environment:
-
-To run the scenarios locally, along with these git repositories, a Jenkins server is required to create and run pipeline jobs. A nexus server is required to host consumer and provider's released artifacts. A Pact broker server and Postgres SQL DB to hold the Pact contracts. 
-
-### Make Jenkins, Pact Broker and Nexus accessible on local:
-
-Add following entries in `/etc/hosts` to allow access to these services 
-
-```
-127.0.0.1 mynexus
-127.0.0.1 broker_app
-127.0.0.1 jenkins
-```
 
 ### Add settings.xml:
 
@@ -95,13 +62,43 @@ cp settings.xml ~/.m2/
 
 Run tests locally with command `mvn clean install`
 
-### Test setup by running User service (make sure to use the right command or avoid running) locally:
+### Test setup by running User service locally:
 
-Run test locally with command `mvn clean install -Dpact.verifier.publishResults=false`
+Run test locally with command `mvn clean install`
+ 
+# Pre-requisites before CI/CD infrastructure setup:
+In this workshop, we are going to create a jenkins pipeline for couple of microservices and the pipelines for consumer driven contracts. We are going to use docker to set up everything locally and hence we will recommend to use good configuration machine to the set up (atlest 16 GB RAM, quad core processor)
 
-(The test might fail if the pact broker is not running or there are not pacts in the pact broker, it will work once you publish the pacts from the order service pacts).
+1. One must have installed docker locally before starting the next set up. How to install docker locally can be found [here](https://docs.docker.com/install/).
 
-### Start all the services locally:
+After installing docker, change the following settings in the docker preferences -> Advanced:
+
+4 CPUs, 6 GiB RAM, Swap Memory 1 GiB
+
+# Creating Jenkins image:
+
+Build the jenkins docker image using dockerfile with following command
+```
+docker build -t cdc-expert-talk/jenkins-cdc -f ./jenkinsDockerfile .
+```
+This will create the jenkins build with the suggested plugins. The plugin list is taken from [https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json](https://github.com/jenkinsci/jenkins/blob/jenkins-2.19.4/core/src/main/resources/jenkins/install/platform-plugins.json)
+
+
+# Setting up infrastructure:
+
+To run the scenarios locally, along with these git repositories, a Jenkins server is required to create and run pipeline jobs. A nexus server is required to host consumer and provider's released artifacts. A Pact broker server and Postgres SQL DB to hold the Pact contracts. 
+
+### Make Jenkins, Pact Broker and Nexus accessible on local:
+
+Add following entries in `/etc/hosts` to allow access to these services 
+
+```
+127.0.0.1 mynexus
+127.0.0.1 broker_app
+127.0.0.1 jenkins
+```
+
+### Start infrastructure locally:
 
 To start all of these run the docker compose command :
 
@@ -109,7 +106,7 @@ To start all of these run the docker compose command :
 docker-compose up
 ```
 
-### Verify services are up and running locally:
+### Verify infrastructure services are up and running locally:
 Verify by hitting following urls in the browser:
 
 Pact Broker:
@@ -140,8 +137,13 @@ cp /tmp/settings.xml /var/jenkins_home/.m2/
 
 #### Create an SSH key for Jenkins and add it in github account
 
-Create ssh key with instructions from 
-https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux
+Create ssh key with command
+
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Just Enter multiple times to generate the key.
 
 Add ssh key to github account
 https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#platform-linux
