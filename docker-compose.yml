@@ -12,6 +12,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres
+    volumes:
+      - "pact_postgres:/var/lib/postgresql/data"
 
   broker_app:
     image: dius/pact-broker
@@ -24,6 +26,7 @@ services:
       PACT_BROKER_DATABASE_PASSWORD: password
       PACT_BROKER_DATABASE_HOST: postgres
       PACT_BROKER_DATABASE_NAME: postgres
+      PACT_BROKER_WEBHOOK_SCHEME_WHITELIST: http https
 
   jenkins:
     image: cdc-expert-talk/jenkins-cdc
@@ -55,7 +58,8 @@ services:
 
 volumes:
   jenkins_home:
-  nexus-repo:  
+  nexus-repo:
+  pact_postgres:
 
 networks:
   cdc-setup:
