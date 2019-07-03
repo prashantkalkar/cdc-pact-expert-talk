@@ -162,7 +162,7 @@ Run command
 ssh -T git@github.com
 ```
 
-#### Configure slack global configuration
+#### Configure slack global configuration (not required)
 Use base URL : https://cdc-expert-talk.slack.com/services/hooks/jenkins-ci/
 
 Integration token : `<generated>`
