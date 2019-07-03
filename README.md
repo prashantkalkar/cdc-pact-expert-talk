@@ -110,13 +110,13 @@ docker-compose up
 Verify by hitting following urls in the browser:
 
 Pact Broker:
-http://broker_app:80
+[http://broker_app:80](http://broker_app:80)
 
 Nexus:
-http://mynexus:8081/nexus
+[http://mynexus:8081/nexus](http://mynexus:8081/nexus)
 
 Jenkins:
-http://jenkins:8080
+[http://jenkins:8080](http://jenkins:8080)
 
 
 ### Setup Jenkins
