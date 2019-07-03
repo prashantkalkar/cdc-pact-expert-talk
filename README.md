@@ -167,7 +167,9 @@ Use base URL : https://cdc-expert-talk.slack.com/services/hooks/jenkins-ci/
 
 Integration token : `<generated>`
  
-#### Disable CSRF (see webhook add section).
+#### Disable CSRF.
+
+Follow steps from (disable instead of enabling it) : https://support.cloudbees.com/hc/en-us/articles/219257077-CSRF-Protection-Explained
 
 # Demo scenarios
 
